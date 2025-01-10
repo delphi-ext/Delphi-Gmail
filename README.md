@@ -4,7 +4,7 @@
 
 ## Usage Example:
 ```delphi
-Gmail := TcfsGmail.Create('YourAccount@gmail.com', 'App password', 'From you/company', 'YourAccount@gmail.com', Host, Port);
+Gmail := TxtGmail.Create('YourAccount@gmail.com', 'App password', 'From you/company', 'YourAccount@gmail.com', Host, Port);
 try
   try
     Gmail.Connect;
