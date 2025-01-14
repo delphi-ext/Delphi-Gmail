@@ -15,15 +15,40 @@ type
     FIdSSLIOHandlerSocket: TIdSSLIOHandlerSocketOpenSSL;
     FIdSMTP: TIdSMTP;
   public
-    /// <summary>
-    /// Create
-    /// </summary>
-    /// <param name="FromAlias">Почта отправителя</param>
-    constructor Create(const UserName, Password, FromName, FromAlias, Host: string; Port: Word);
-    destructor Destroy; override;
-    procedure Connect;
+  /// <summary>
+  /// Конструктор класса TxtGmail. Инициализирует объект с указанными параметрами.
+  /// Constructor of the TxtGmail class. Initializes the object with the specified parameters.
+  /// </summary>
+  /// <param name="UserName">Имя пользователя для аутентификации на SMTP-сервере. Username for authentication on the SMTP server.</param>
+  /// <param name="Password">Пароль для аутентификации на SMTP-сервере. Password for authentication on the SMTP server.</param>
+  /// <param name="FromName">Имя отправителя, которое будет отображаться в письме. Sender's name that will be displayed in the email.</param>
+  /// <param name="FromAlias">Алиас отправителя (обычно email адрес). Sender's alias (usually the email address).</param>
+  /// <param name="Host">Адрес SMTP-сервера. Address of the SMTP server.</param>
+  /// <param name="Port">Порт SMTP-сервера. Port of the SMTP server.</param>
+  constructor Create(const UserName, Password, FromName, FromAlias, Host: string; Port: Word);
 
-    procedure Send(ToAddresses: array of string; const Subject, PlainBody: string; const HTMLBody: string = ''; const AttachmentFile: string = '');
+  /// <summary>
+  /// Деструктор класса TxtGmail. Освобождает ресурсы, занятые объектом.
+  /// Destructor of the TxtGmail class. Frees the resources occupied by the object.
+  /// </summary>
+  destructor Destroy; override;
+
+  /// <summary>
+  /// Устанавливает соединение с SMTP-сервером и выполняет аутентификацию.
+  /// Establishes a connection to the SMTP server and performs authentication.
+  /// </summary>
+  procedure Connect;
+
+  /// <summary>
+  /// Отправляет email на указанные адреса.
+  /// Sends an email to the specified addresses.
+  /// </summary>
+  /// <param name="ToAddresses">Массив строк, содержащий адреса получателей. Array of strings containing the recipient addresses.</param>
+  /// <param name="Subject">Тема письма. Subject of the email.</param>
+  /// <param name="PlainBody">Текст письма в формате plain text. Text of the email in plain text format.</param>
+  /// <param name="HTMLBody">Текст письма в формате HTML (необязательный параметр). Text of the email in HTML format (optional parameter).</param>
+  /// <param name="AttachmentFile">Путь к файлу, который будет прикреплен к письму (необязательный параметр). Path to the file to be attached to the email (optional parameter).</param>
+  procedure Send(ToAddresses: array of string; const Subject, PlainBody: string; const HTMLBody: string = ''; const AttachmentFile: string = '');
  end;
 
 implementation
